@@ -1,4 +1,6 @@
 # Introduction
+<a href="https://github.com/JHying/message-receiver/blob/master/LICENSE">![License: MIT](https://img.shields.io/badge/License-MIT-orange)</a>
+<a href="https://github.com/JHying/message-receiver/releases/tag/v1.0.0">![Release: v1.0.0](https://img.shields.io/badge/Release-1.0.0-blue)</a>
 
 RabbitMQ receiver for line bot + chatGPT messages
 【*call openAI*】 type message: Hi ChatGPT
