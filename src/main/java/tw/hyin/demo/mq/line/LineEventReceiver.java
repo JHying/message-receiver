@@ -11,11 +11,11 @@ import com.linecorp.bot.model.event.message.TextMessageContent;
 import com.rabbitmq.client.Channel;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import tw.hyin.demo.config.RabbitMqConfig;
-import tw.hyin.demo.mq.IMqReceiver;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
+import tw.hyin.demo.config.RabbitMqConfig;
+import tw.hyin.demo.mq.IMqConsumer;
 import tw.hyin.java.utils.Log;
 
 /**
@@ -25,13 +25,13 @@ import tw.hyin.java.utils.Log;
  */
 @Component
 @RequiredArgsConstructor
-public class LineEventReceiver implements IMqReceiver<Event> {
+public class LineEventReceiver implements IMqConsumer<Event> {
 
     private final LineEventHandler lineEventHandler;
 
     @Override
     @SneakyThrows
-    @RabbitListener(queues = {RabbitMqConfig.LINE_QUEUE})
+    @RabbitListener(queues = {RabbitMqConfig.LINE_QUEUE}, concurrency = "5")
     public void receiveMessage(Event receiveObj, Message message, Channel channel) {
         Log.info("Received message >> ID: {}", message.getMessageProperties().getMessageId());
         try {

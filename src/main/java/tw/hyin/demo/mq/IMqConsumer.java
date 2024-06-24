@@ -11,7 +11,7 @@ import org.springframework.amqp.core.Message;
  *
  * @Description
  */
-public interface IMqReceiver<T> {
+public interface IMqConsumer<T> {
 
     public void receiveMessage(T receiveObj, Message message, Channel channel);
 

@@ -21,13 +21,13 @@ public class ChatRequest implements Serializable {
     private List<ChatMsg> messages; //for chat model
 
     public ChatRequest(String role) {
-        this.model = "gpt-3.5-turbo";
+        this.model = "gpt-4-turbo";
         this.messages = new ArrayList<>();
         this.messages.add(new ChatMsg("system", role));
     }
 
     public ChatRequest(String role, String prompt) {
-        this.model = "gpt-3.5-turbo";
+        this.model = "gpt-4-turbo";
         this.messages = new ArrayList<>();
         this.messages.add(new ChatMsg("system", role));
         this.messages.add(new ChatMsg("user", prompt));
